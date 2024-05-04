@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:data/api/api_state.dart';
-import 'package:data/dto/date.dto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
