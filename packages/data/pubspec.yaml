@@ -1,0 +1,36 @@
+name: data
+description: "A new Flutter plugin project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+  build_runner: 2.4.9
+
+  domain:
+    path: ../domain
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.data
+        pluginClass: DataPlugin
+      ios:
+        pluginClass: DataPlugin
+
+  assets:
+    - assets/
+#    - data/assets/date.json
+#    - data/assets/sunday.json
