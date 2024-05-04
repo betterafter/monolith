@@ -13,20 +13,19 @@ class ReservationRepositoryImpl implements ReservationRepository {
   Future<List<DateEntity>?> getDateList() async {
     try {
       var dateList = await reservationApi.getDateList();
-      return dateList?.on(
-          success: (result) async {
-            try {
-              return await compute((result) {
-                var dateList = <DateEntity>[];
-                for (var element in (result?['data'] as List<dynamic>)) {
-                  dateList.add(DateEntity.fromJson(element));
-                }
-
-                return dateList;
-              }, result);
-            } catch (e) {
-              return [];
+      return dateList?.on(success: (result) async {
+        try {
+          return await compute((result) {
+            var dateList = <DateEntity>[];
+            for (var element in (result?['data'] as List<dynamic>)) {
+              dateList.add(DateEntity.fromJson(element));
             }
+
+            return dateList;
+          }, result);
+        } catch (e) {
+          return [];
+        }
       }, error: (result, exception) {
         return null;
       });
@@ -36,9 +35,26 @@ class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @override
-  List<ProductEntity> getReservationInfo({bool? isSunday = false}) {
-    // TODO: implement getReservationInfo
-    throw UnimplementedError();
-  }
+  Future<ProductEntity?> getReservationInfo(
+      {bool isSunday = false}) async {
+    try {
+      var data = isSunday
+          ? await reservationApi.getSunday()
+          : await reservationApi.getBasic();
 
+      return await data?.on(success: (result) async {
+        try {
+          return await compute((result)  {
+            return ProductEntity.fromJson(result?['data']);
+          }, result);
+        } catch (e) {
+          return null;
+        }
+      }, error: (result, exception) {
+        return null;
+      });
+    } catch (e) {
+      return null;
+    }
+  }
 }
