@@ -12,8 +12,14 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
-#  data:
-#    path: packages/data
+  get_it: 7.0.0
+
+  data:
+    path: packages/data
+  domain:
+    path: packages/domain
+  app:
+    path: packages/app
 
 
 dev_dependencies:
