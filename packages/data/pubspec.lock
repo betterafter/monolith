@@ -226,14 +226,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
-  get_it:
-    dependency: transitive
-    description:
-      name: get_it
-      sha256: "6d2cd313b60cfd11e725f8daaf1685e8cf6a0e7afdbed3c871e685ef8632c32a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
   glob:
     dependency: transitive
     description:
@@ -291,7 +283,7 @@ packages:
     source: hosted
     version: "4.9.0"
   json_serializable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_serializable
       sha256: ea1432d167339ea9b5bb153f0571d0039607a873d6e04e0117af043f14a1fd4b

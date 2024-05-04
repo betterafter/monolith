@@ -1,7 +1,7 @@
-name: data
+name: app
 description: "A new Flutter plugin project."
 version: 0.0.1
-publish_to: none
+homepage:
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
@@ -11,11 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  build_runner: 2.4.9
-  json_serializable: 6.8.0
+  get_it: 7.0.0
 
   domain:
-    path: ../domain
+    path: ../../packages/domain
 
 dev_dependencies:
   flutter_test:
@@ -26,12 +25,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.data
-        pluginClass: DataPlugin
+        package: com.example.app
+        pluginClass: AppPlugin
       ios:
-        pluginClass: DataPlugin
-
-  assets:
-    - assets/
-#    - data/assets/date.json
-#    - data/assets/sunday.json
+        pluginClass: AppPlugin
