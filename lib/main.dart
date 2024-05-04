@@ -4,5 +4,5 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
 
-  runApp();
+  runApp(Container());
 }
