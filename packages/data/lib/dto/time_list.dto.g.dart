@@ -6,8 +6,7 @@ part of 'time_list.dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
-    TimeListEntity(
+TimeListDto _$TimeListDtoFromJson(Map<String, dynamic> json) => TimeListDto(
       enabled: json['enabled'] as bool?,
       appOnlyYn: json['appOnlyYn'] as bool?,
       operationStopYn: json['operationStopYn'] as bool?,
@@ -27,7 +26,7 @@ TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
       totStockCount: (json['totStockCount'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
+Map<String, dynamic> _$TimeListDtoToJson(TimeListDto instance) =>
     <String, dynamic>{
       'timeSlot': instance.timeSlot,
       'stcDetailId': instance.stcDetailId,

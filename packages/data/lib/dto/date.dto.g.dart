@@ -6,15 +6,14 @@ part of 'date.dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DateEntity _$DateEntityFromJson(Map<String, dynamic> json) => DateEntity(
+DateDto _$DateDtoFromJson(Map<String, dynamic> json) => DateDto(
       dplId: (json['dplId'] as num?)?.toInt(),
       date: json['date'] as String?,
       enabled: json['enabled'] as bool?,
       holidayYn: json['holidayYn'] as bool?,
     );
 
-Map<String, dynamic> _$DateEntityToJson(DateEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DateDtoToJson(DateDto instance) => <String, dynamic>{
       'dplId': instance.dplId,
       'date': instance.date,
       'enabled': instance.enabled,

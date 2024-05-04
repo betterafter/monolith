@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'date.dto.g.dart';
 
 @JsonSerializable()
-class DateEntity {
+class DateDto {
   @JsonKey(name: 'dplId')
   int? dplId;
 
@@ -16,10 +16,10 @@ class DateEntity {
   @JsonKey(name: 'holidayYn')
   bool? holidayYn;
 
-  DateEntity({this.dplId, this.date, this.enabled, this.holidayYn});
+  DateDto({this.dplId, this.date, this.enabled, this.holidayYn});
 
-  factory DateEntity.fromJson(Map<String, dynamic> json) =>
-      _$DateEntityFromJson(json);
+  factory DateDto.fromJson(Map<String, dynamic> json) =>
+      _$DateDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DateEntityToJson(this);
+  Map<String, dynamic> toJson() => _$DateDtoToJson(this);
 }

@@ -4,7 +4,7 @@ part 'product_detail_list.dto.g.dart';
 
 @JsonSerializable()
 /// basic과 sunday의 productDetailList를 위한 클래스
-class ProductDetailListEntity {
+class ProductDetailListDto {
   @JsonKey(name: 'prdDetailId')
   int? prdDetailId;
 
@@ -17,15 +17,15 @@ class ProductDetailListEntity {
   @JsonKey(name: 'orderNo')
   int? orderNo;
 
-  ProductDetailListEntity({
+  ProductDetailListDto({
     this.prdDetailId,
     this.entranceStartTime,
     this.entranceEndTime,
     this.orderNo,
   });
 
-  factory ProductDetailListEntity.fromJson(Map<String, dynamic> json) =>
-      _$ProductDetailListEntityFromJson(json);
+  factory ProductDetailListDto.fromJson(Map<String, dynamic> json) =>
+      _$ProductDetailListDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductDetailListEntityToJson(this);
+  Map<String, dynamic> toJson() => _$ProductDetailListDtoToJson(this);
 }

@@ -5,7 +5,7 @@ part 'time_list.dto.g.dart';
 
 @JsonSerializable()
 /// basic, sunday의 timeList를 위한 클래스
-class TimeListEntity {
+class TimeListDto {
   @JsonKey(name: 'timeSlot')
   String? timeSlot;
 
@@ -48,7 +48,7 @@ class TimeListEntity {
   @JsonKey(name: 'stockStatus')
   int? stockStatus;
 
-  TimeListEntity({
+  TimeListDto({
     this.enabled,
     this.appOnlyYn,
     this.operationStopYn,
@@ -65,8 +65,8 @@ class TimeListEntity {
     this.totStockCount,
   });
 
-  factory TimeListEntity.fromJson(Map<String, dynamic> json) =>
-      _$TimeListEntityFromJson(json);
+  factory TimeListDto.fromJson(Map<String, dynamic> json) =>
+      _$TimeListDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TimeListEntityToJson(this);
+  Map<String, dynamic> toJson() => _$TimeListDtoToJson(this);
 }
