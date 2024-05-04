@@ -1,4 +1,3 @@
-import 'package:data/api/api_state.dart';
 import 'package:domain/entity/date.entity.dart';
 import 'package:domain/entity/product.entity.dart';
 import 'package:domain/repository/reservation.repository.dart';
@@ -29,7 +28,7 @@ class ReservationRepositoryImpl implements ReservationRepository {
       }, error: (result, exception) {
         return null;
       });
-    } on Exception catch (e) {
+    } on Exception {
       return null;
     }
   }

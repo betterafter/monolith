@@ -19,7 +19,11 @@ class _ReservationScreenState extends State<ReservationScreen> {
   void initState() {
     super.initState();
     _reservationUsecase = GetIt.instance();
-    log('[keykat] get: ${_reservationUsecase}');
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+
+      var datalist = await _reservationUsecase.getDateList();
+      print(datalist);
+    });
   }
 
   @override
