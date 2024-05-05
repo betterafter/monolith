@@ -1,6 +1,7 @@
 
 import 'package:app/bloc/date_selection.bloc.dart';
 import 'package:app/screen/date_selection.widget.dart';
+import 'package:app/screen/time_selection.widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +35,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               DateSelectionWidget(),
-              // Expanded(child: TimeSelectionWidget()),
+              Expanded(child: TimeSelectionWidget()),
             ],
           ),
         ),

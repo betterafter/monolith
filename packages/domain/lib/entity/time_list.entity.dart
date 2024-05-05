@@ -48,6 +48,8 @@ class TimeListEntity {
   @JsonKey(name: 'stockStatus')
   int? stockStatus;
 
+  bool? soldOut;
+
   TimeListEntity({
     this.enabled,
     this.operationStopYn,

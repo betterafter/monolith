@@ -1,3 +1,4 @@
+import 'package:app/component/MLColor.dart';
 import 'package:domain/usecase/reservation.usecase.dart';
 
 import 'package:app/bloc/date_selection.event.dart';
@@ -38,7 +39,12 @@ class DateSelectionBloc extends Bloc<DateEvent, DateState> {
       var product =
           await reservationUsecase.getReservationInfo(dateString: selectDate);
 
-      print('[keykat] product: $product');
+      emit(DateSelectedState(
+        productName: product?.productName,
+        productDisplayName: product?.productDisplayName,
+        riderCount: product?.riderCount.toString(),
+        timeList: product?.timeList,
+      ));
     } catch (e) {
       emit(DateState.error());
     }

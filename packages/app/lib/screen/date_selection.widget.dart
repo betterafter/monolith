@@ -45,6 +45,9 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DateSelectionBloc, DateState>(
+      buildWhen: (previous, current) {
+        return current is DateInitialState;
+      },
       builder: (context, state) {
         var dateList = <Widget>[];
 
@@ -119,7 +122,7 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
                             ),
                           )
                         : const BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.transparent,
                           ),
                     child: Text(
                       date.dayString ?? '',

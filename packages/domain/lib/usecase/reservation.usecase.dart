@@ -22,6 +22,6 @@ class ReservationUsecase {
       isSunday: isSunday,
     );
 
-    return product;
+    return ReservationUiTranslator.translatedProduct(product);
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:app/component/MLColor.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +12,8 @@ extension ReservationExtension on TextStyle {
 
   TextStyle unSelectedDayStyle(bool? isHoliday) {
     return TextStyle(
-      color: isHoliday == true
-              ? MLColor.mlHolidayColor
-              : MLColor.mlPrimaryColor,
+      color:
+          isHoliday == true ? MLColor.mlHolidayColor : MLColor.mlPrimaryColor,
       fontWeight: FontWeight.w300,
       fontSize: 20,
     );
@@ -38,6 +36,23 @@ extension ReservationExtension on TextStyle {
               : MLColor.mlPrimaryColor,
       fontWeight: FontWeight.w300,
       fontSize: 14,
+    );
+  }
+
+  TextStyle selectedTimeStyle() {
+    return const TextStyle(
+      color: MLColor.mlWhite,
+      fontWeight: FontWeight.w600,
+      fontSize: 20,
+    );
+  }
+
+  TextStyle unSelectedTimeStyle(bool? soldOut) {
+    return TextStyle(
+      color:
+          soldOut == true ? MLColor.mlSoldOutTextColor : MLColor.mlPrimaryColor,
+      fontWeight: FontWeight.w400,
+      fontSize: 20,
     );
   }
 }

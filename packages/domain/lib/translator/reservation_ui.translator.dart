@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:domain/entity/product.entity.dart';
 import 'package:intl/intl.dart';
 
 import '../entity/date.entity.dart';
@@ -30,13 +31,29 @@ class ReservationUiTranslator {
       // 오늘 날짜 하드코딩
       var currDate = '2021-05-05';
       date.isToday = date.date == currDate;
-      date.dayOfWeek = date.isToday == true ? '오늘' : _weekDay[fullDate?.weekday];
+      date.dayOfWeek =
+          date.isToday == true ? '오늘' : _weekDay[fullDate?.weekday];
       date.isSunday = _weekDay[fullDate?.weekday] == '일';
       date.fullDateString =
           '${date.date?.replaceAll('-', '.')} (${date.dayOfWeek})';
     });
 
     return dateList;
+  }
+
+  static ProductEntity? translatedProduct(ProductEntity? product) {
+    if (product == null) {
+      return null;
+    }
+
+    product.timeList?.forEach((item) {
+      if (item.stockStatusStr == '재고부족') {
+        item.stockStatusStr = '매진';
+        item.soldOut = true;
+      }
+    });
+
+    return product;
   }
 
   static bool isSunday(String? dateString) {

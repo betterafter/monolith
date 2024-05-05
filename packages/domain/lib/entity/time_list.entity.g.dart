@@ -25,7 +25,7 @@ TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
       timeSlot: json['timeSlot'] as String?,
       totStockCount: (json['totStockCount'] as num?)?.toInt(),
       appOnlyYn: json['appOnlyYn'] as bool?,
-    );
+    )..soldOut = json['soldOut'] as bool?;
 
 Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
     <String, dynamic>{
@@ -43,4 +43,5 @@ Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
       'optionList': instance.optionList,
       'stockStatusStr': instance.stockStatusStr,
       'stockStatus': instance.stockStatus,
+      'soldOut': instance.soldOut,
     };
