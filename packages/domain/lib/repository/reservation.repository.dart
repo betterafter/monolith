@@ -6,6 +6,7 @@ abstract class ReservationRepository {
   Future<List<DateEntity>?> getDateList();
 
   Future<ProductEntity?> getReservationInfo({
+    required String dateString,
     bool isSunday = false,
 });
 }

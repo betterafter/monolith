@@ -34,8 +34,10 @@ class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @override
-  Future<ProductEntity?> getReservationInfo(
-      {bool isSunday = false}) async {
+  Future<ProductEntity?> getReservationInfo({
+    required String dateString,
+    bool isSunday = false,
+  }) async {
     try {
       var data = isSunday
           ? await reservationApi.getSunday()
@@ -43,7 +45,7 @@ class ReservationRepositoryImpl implements ReservationRepository {
 
       return await data?.on(success: (result) async {
         try {
-          return await compute((result)  {
+          return await compute((result) {
             return ProductEntity.fromJson(result?['data']);
           }, result);
         } catch (e) {

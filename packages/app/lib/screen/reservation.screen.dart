@@ -1,8 +1,9 @@
-import 'dart:developer';
 
-import 'package:domain/usecase/reservation.usecase.dart';
+import 'package:app/bloc/date_selection.bloc.dart';
+import 'package:app/screen/date_selection.widget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class ReservationScreen extends StatefulWidget {
@@ -13,22 +14,31 @@ class ReservationScreen extends StatefulWidget {
 }
 
 class _ReservationScreenState extends State<ReservationScreen> {
-  late ReservationUsecase _reservationUsecase;
 
   @override
   void initState() {
     super.initState();
-    _reservationUsecase = GetIt.instance();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-
-      var datalist = await _reservationUsecase.getDateList();
-      print(datalist);
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return const Placeholder();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DateSelectionBloc>(
+          create: (context) => GetIt.instance(),
+        ),
+      ],
+      child: const MaterialApp(
+        home: Scaffold(
+          body: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              DateSelectionWidget(),
+              // Expanded(child: TimeSelectionWidget()),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

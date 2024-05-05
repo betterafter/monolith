@@ -49,4 +49,19 @@ class ProductEntity {
       _$ProductEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductEntityToJson(this);
+
+  @override
+  String toString() {
+    return '''{
+      dplId: $dplId,
+      prdId: $prdId,
+      productDisplayName: $productDisplayName,
+      productName: $productName,
+      reserveDt: $reserveDt,
+      riderCount: $riderCount,
+      ticketPrice: $ticketPrice,
+      ticketSalePrice: $ticketSalePrice,
+      timeList: $timeList,
+    }''';
+  }
 }

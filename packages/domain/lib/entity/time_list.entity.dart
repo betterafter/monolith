@@ -50,7 +50,6 @@ class TimeListEntity {
 
   TimeListEntity({
     this.enabled,
-    this.appOnlyYn,
     this.operationStopYn,
     this.optionList,
     this.productDetailList,
@@ -69,4 +68,22 @@ class TimeListEntity {
       _$TimeListEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$TimeListEntityToJson(this);
+
+  @override
+  String toString() {
+    return '''{
+      enabled: $enabled,
+      operationStopYn: $operationStopYn,
+      optionList: $optionList,
+      productDetailList: $productDetailList,
+      stcDetailId: $stcDetailId,
+      stockCount: $stockCount,
+      stockEndTime: $stockEndTime,
+      stockStatus: $stockStatus,
+      stockStatusStr: $stockStatusStr,
+      stockUseYn: $stockUseYn,
+      timeSlot: $timeSlot,
+      totStockCount: $totStockCount,
+    }''';
+  }
 }
