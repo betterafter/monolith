@@ -64,8 +64,9 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
           dateList.addAll(_dateWidgetList(state.dateList ?? []));
         }
 
-        return SizedBox(
+        return Container(
           width: MediaQuery.of(context).size.width,
+          color: MLColor.mlBackgroundGrayColor,
           height: 130,
           child: Column(
             children: [
