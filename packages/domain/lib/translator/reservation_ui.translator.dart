@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:intl/intl.dart';
 
 import '../entity/date.entity.dart';
 
@@ -36,5 +37,13 @@ class ReservationUiTranslator {
     });
 
     return dateList;
+  }
+
+  static bool isSunday(String? dateString) {
+    if (dateString == null) {
+      return false;
+    }
+
+    return _weekDay[DateFormat('yyyy-MM-dd').parse(dateString).weekday] == '일';
   }
 }

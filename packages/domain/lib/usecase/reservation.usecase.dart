@@ -15,8 +15,8 @@ class ReservationUsecase {
 
   Future<ProductEntity?> getReservationInfo({
     required String dateString,
-    bool isSunday = false,
   }) async {
+    var isSunday = ReservationUiTranslator.isSunday(dateString);
     var product = await reservationRepository.getReservationInfo(
       dateString: dateString,
       isSunday: isSunday,
