@@ -56,7 +56,7 @@ class _TimeSelectionWidgetState extends State<TimeSelectionWidget> {
         return Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+              padding: const EdgeInsets.fromLTRB(25, 10, 25, 80),
               child: GridView.builder(
                 itemCount: itemList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
