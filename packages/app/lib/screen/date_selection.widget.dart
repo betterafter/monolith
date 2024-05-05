@@ -53,6 +53,12 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
 
         if (state is DateInitialState) {
           _todayIndex.value = state.todayIndex ?? 0;
+          context.read<DateSelectionBloc>().add(
+            DateSelectEvent(
+              state.dateList?[_todayIndex.value].date ?? '',
+              selectedIndex: _todayIndex.value,
+            ),
+          );
           _animateScrollController();
           dateList.addAll(_dateWidgetList(state.dateList ?? []));
         }
