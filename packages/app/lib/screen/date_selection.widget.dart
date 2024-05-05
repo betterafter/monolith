@@ -107,7 +107,10 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
                     _isScrolling.value = true;
                     _animateScrollController();
                     context.read<DateSelectionBloc>().add(
-                          DateSelectEvent(date.date ?? ''),
+                          DateSelectEvent(
+                            date.date ?? '',
+                            selectedIndex: mapIndex,
+                          ),
                         );
                   },
                   child: Container(

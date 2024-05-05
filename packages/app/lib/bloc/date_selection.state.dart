@@ -13,6 +13,14 @@ abstract class DateState {
     List<TimeListEntity>? timeList,
   }) = DateSelectedState;
 
+  factory DateState.selectNextButton({
+    String? productName,
+    String? productDisplayName,
+    String? riderCount,
+    String? date,
+    String? ticketPrice,
+  }) = SelectNextButtonState;
+
   factory DateState.error() = DateErrorState;
 
   factory DateState.initial({
@@ -32,6 +40,22 @@ class DateSelectedState extends DateState {
     this.productDisplayName,
     this.riderCount,
     this.timeList,
+  });
+}
+
+class SelectNextButtonState extends DateState {
+  final String? productName;
+  final String? productDisplayName;
+  final String? riderCount;
+  final String? date;
+  final String? ticketPrice;
+
+  SelectNextButtonState({
+    this.productName,
+    this.productDisplayName,
+    this.riderCount,
+    this.date,
+    this.ticketPrice,
   });
 }
 

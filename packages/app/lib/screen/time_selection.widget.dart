@@ -1,3 +1,4 @@
+import 'package:app/bloc/date_selection.event.dart';
 import 'package:app/component/MLColor.dart';
 import 'package:app/screen/reservation.extension.dart';
 import 'package:collection/collection.dart';
@@ -27,27 +28,74 @@ class _TimeSelectionWidgetState extends State<TimeSelectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DateSelectionBloc, DateState>(
+    return BlocConsumer<DateSelectionBloc, DateState>(
+      listenWhen: (previous, current) {
+        return current is SelectNextButtonState;
+      },
+      listener: (context, state) {
+        if (state is SelectNextButtonState) {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return _bottomSheet(state);
+            },
+          );
+        }
+      },
       builder: (BuildContext context, DateState state) {
         var itemList = <Widget>[];
         if (state is DateSelectedState) {
           itemList.addAll(_itemList(state.timeList ?? []));
         }
 
-        return Padding(
-          padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
-          child: GridView.builder(
-            itemCount: itemList.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1.5,
+        return Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+              child: GridView.builder(
+                itemCount: itemList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1.5,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return itemList[index];
+                },
+              ),
             ),
-            itemBuilder: (BuildContext context, int index) {
-              return itemList[index];
-            },
-          ),
+            Positioned(
+              bottom: 10,
+              left: 10,
+              right: 10,
+              child: GestureDetector(
+                onTap: () {
+                  context.read<DateSelectionBloc>().add(
+                        SelectNextButtonEvent(),
+                      );
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: MLColor.mlBlue,
+                      borderRadius: BorderRadius.circular(50)),
+                  margin: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  child: const Text(
+                    '다음',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: MLColor.mlWhite,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         );
       },
     );
@@ -55,7 +103,6 @@ class _TimeSelectionWidgetState extends State<TimeSelectionWidget> {
 
   List<Widget> _itemList(List<TimeListEntity> itemList) {
     return itemList.mapIndexed((mapIndex, timeItem) {
-      print('[keykat] item: $timeItem');
       return ValueListenableBuilder(
         valueListenable: _selectedIndex,
         builder: (context, index, child) {
@@ -69,6 +116,9 @@ class _TimeSelectionWidgetState extends State<TimeSelectionWidget> {
               }
 
               _selectedIndex.value = mapIndex;
+              context.read<DateSelectionBloc>().add(
+                    TimeSelectEvent(timeItem.timeSlot),
+                  );
             },
             child: AnimatedContainer(
               width: 100,
@@ -114,5 +164,96 @@ class _TimeSelectionWidgetState extends State<TimeSelectionWidget> {
         },
       );
     }).toList();
+  }
+
+  Widget _bottomSheet(SelectNextButtonState state) {
+    return Container(
+        padding: EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '상품명',
+                  style: TextStyle(
+                    color: MLColor.mlSecondaryGrayColor,
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      '${state.productName} ${state.productDisplayName?.replaceAll('\\n', '\n')}',
+                      textAlign: TextAlign.right,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '날짜시간',
+                  style: TextStyle(
+                    color: MLColor.mlSecondaryGrayColor,
+                  ),
+                ),
+                Text('${state.date}')
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '구매인원',
+                  style: TextStyle(
+                    color: MLColor.mlSecondaryGrayColor,
+                  ),
+                ),
+                Text('${state.riderCount}명')
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '총합계',
+                  style: TextStyle(
+                      color: MLColor.mlPrimaryColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900),
+                ),
+                Text(
+                  '${state.ticketPrice}원',
+                  style: const TextStyle(
+                      color: MLColor.mlPrimaryColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900),
+                )
+              ],
+            ),
+            GestureDetector(
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: MLColor.mlBlue,
+                    borderRadius: BorderRadius.circular(50)),
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                child: const Text(
+                  '다음',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: MLColor.mlWhite,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ));
   }
 }

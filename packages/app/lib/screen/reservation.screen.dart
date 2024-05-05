@@ -1,11 +1,14 @@
-
 import 'package:app/bloc/date_selection.bloc.dart';
+import 'package:app/bloc/date_selection.event.dart';
+import 'package:app/bloc/date_selection.state.dart';
 import 'package:app/screen/date_selection.widget.dart';
 import 'package:app/screen/time_selection.widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+
+import '../component/MLColor.dart';
 
 class ReservationScreen extends StatefulWidget {
   const ReservationScreen({super.key});
@@ -15,7 +18,6 @@ class ReservationScreen extends StatefulWidget {
 }
 
 class _ReservationScreenState extends State<ReservationScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -29,14 +31,22 @@ class _ReservationScreenState extends State<ReservationScreen> {
           create: (context) => GetIt.instance(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         home: Scaffold(
-          body: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              DateSelectionWidget(),
-              Expanded(child: TimeSelectionWidget()),
-            ],
+          body: BlocListener<DateSelectionBloc, DateState>(
+            listener: (context, state) {},
+            child: const Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    DateSelectionWidget(),
+                    Expanded(child: TimeSelectionWidget()),
+                  ],
+                ),
+
+              ],
+            ),
           ),
         ),
       ),

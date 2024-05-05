@@ -12,6 +12,7 @@ class MLColor {
   static const Color mlPrimaryColor = Color(0xff000000);
 
   static const Color mlPrimaryGrayColor = Color(0xffdadada);
+  static const Color mlSecondaryGrayColor = Color(0xff6b6b6b);
 
   static const Color mlSoldOutTextColor = Color(0xffadadad);
   static const Color mlUnableColor = Color(0xFFFF1D00);
