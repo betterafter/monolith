@@ -21,7 +21,7 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
   final ValueNotifier<bool> _isScrolling = ValueNotifier(false);
   late ScrollController _scrollController;
 
-  final double _dateItemWidth = 85;
+  late double _dateItemWidth;
 
   @override
   void initState() {
@@ -44,6 +44,7 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    _dateItemWidth = MediaQuery.of(context).size.width / 6;
     return BlocBuilder<DateSelectionBloc, DateState>(
       buildWhen: (previous, current) {
         return current is DateInitialState;
