@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 class ReservationApi {
   Future<ApiState<Map<String, dynamic>>?> getDateList() async {
-    var data = await rootBundle.loadString('assets/date.json');
+    var data = await rootBundle.loadString('packages/data/assets/date.json');
     var dataMap = await compute((message) async {
       var decodedData = await jsonDecode(message) as Map<String, dynamic>;
       return ApiState.success(data: decodedData);
@@ -16,7 +16,7 @@ class ReservationApi {
   }
 
   Future<ApiState<Map<String, dynamic>>?> getBasic() async {
-    var data = await rootBundle.loadString('assets/basic.json');
+    var data = await rootBundle.loadString('packages/data/assets/basic.json');
     var dataMap = await compute((message) async {
       var decodedData = await jsonDecode(message) as Map<String, dynamic>;
       return ApiState.success(data: decodedData);
@@ -26,7 +26,7 @@ class ReservationApi {
   }
 
   Future<ApiState<Map<String, dynamic>>?> getSunday() async {
-    var data = await rootBundle.loadString('assets/sunday.json');
+    var data = await rootBundle.loadString('packages/data/assets/sunday.json');
     var dataMap = await compute((message) async {
       var decodedData = await jsonDecode(message) as Map<String, dynamic>;
       return ApiState.success(data: decodedData);

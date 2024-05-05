@@ -9,7 +9,6 @@ part of 'time_list.entity.dart';
 TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
     TimeListEntity(
       enabled: json['enabled'] as bool?,
-      appOnlyYn: json['appOnlyYn'] as bool?,
       operationStopYn: json['operationStopYn'] as bool?,
       optionList: json['optionList'] as List<dynamic>?,
       productDetailList: (json['productDetailList'] as List<dynamic>?)
@@ -25,7 +24,8 @@ TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
       stockUseYn: json['stockUseYn'] as bool?,
       timeSlot: json['timeSlot'] as String?,
       totStockCount: (json['totStockCount'] as num?)?.toInt(),
-    );
+      appOnlyYn: json['appOnlyYn'] as bool?,
+    )..soldOut = json['soldOut'] as bool?;
 
 Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
     <String, dynamic>{
@@ -43,4 +43,5 @@ Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
       'optionList': instance.optionList,
       'stockStatusStr': instance.stockStatusStr,
       'stockStatus': instance.stockStatus,
+      'soldOut': instance.soldOut,
     };

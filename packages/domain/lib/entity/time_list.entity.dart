@@ -48,9 +48,10 @@ class TimeListEntity {
   @JsonKey(name: 'stockStatus')
   int? stockStatus;
 
+  bool? soldOut;
+
   TimeListEntity({
     this.enabled,
-    this.appOnlyYn,
     this.operationStopYn,
     this.optionList,
     this.productDetailList,
@@ -63,10 +64,29 @@ class TimeListEntity {
     this.stockUseYn,
     this.timeSlot,
     this.totStockCount,
+    this.appOnlyYn,
   });
 
   factory TimeListEntity.fromJson(Map<String, dynamic> json) =>
       _$TimeListEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$TimeListEntityToJson(this);
+
+  @override
+  String toString() {
+    return '''{
+      enabled: $enabled,
+      operationStopYn: $operationStopYn,
+      optionList: $optionList,
+      productDetailList: $productDetailList,
+      stcDetailId: $stcDetailId,
+      stockCount: $stockCount,
+      stockEndTime: $stockEndTime,
+      stockStatus: $stockStatus,
+      stockStatusStr: $stockStatusStr,
+      stockUseYn: $stockUseYn,
+      timeSlot: $timeSlot,
+      totStockCount: $totStockCount,
+    }''';
+  }
 }

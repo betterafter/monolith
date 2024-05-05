@@ -1,5 +1,3 @@
-import 'package:domain/extension.dart';
-import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'date.entity.g.dart';
@@ -18,20 +16,40 @@ class DateEntity {
   @JsonKey(name: 'holidayYn')
   bool? holidayYn;
 
+  bool? isToday;
+
+  bool? isSunday;
+
+  // 5월, 6월...
+  String? monthString;
+
+  // 1 2 3 4 5...
+  String? dayString;
+
   // 2024.05.05 (월)
   String? fullDateString;
 
   // 월화수목금토일
   String? dayOfWeek;
 
-  DateEntity({this.dplId, this.date, this.enabled, this.holidayYn}) {
-    var week = date != null ? DateTime.parse(date!).weekday : null;
-    dayOfWeek = week != null ? weekDay[week] : null;
-    fullDateString = date?.replaceAll('-', '.');
-  }
+  DateEntity({this.dplId, this.date, this.enabled, this.holidayYn});
 
   factory DateEntity.fromJson(Map<String, dynamic> json) =>
       _$DateEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$DateEntityToJson(this);
+
+  @override
+  String toString() {
+    return '''{
+      dplId: $dplId,
+      date: $date,
+      enabled: $enabled,
+      holidayYn: $holidayYn,
+      monthString: $monthString,
+      fullDateString: $fullDateString,
+      dayOfWeek: $dayOfWeek
+    }
+    ''';
+  }
 }
