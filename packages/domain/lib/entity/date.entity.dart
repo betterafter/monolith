@@ -16,9 +16,9 @@ class DateEntity {
   @JsonKey(name: 'holidayYn')
   bool? holidayYn;
 
-  bool isToday = false;
+  bool? isToday;
 
-  bool isSunday = false;
+  bool? isSunday;
 
   // 5월, 6월...
   String? monthString;

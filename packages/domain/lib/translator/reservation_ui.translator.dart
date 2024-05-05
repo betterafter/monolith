@@ -29,7 +29,7 @@ class ReservationUiTranslator {
       // 오늘 날짜 하드코딩
       var currDate = '2021-05-05';
       date.isToday = date.date == currDate;
-      date.dayOfWeek = date.isToday ? '오늘' : _weekDay[fullDate?.weekday];
+      date.dayOfWeek = date.isToday == true ? '오늘' : _weekDay[fullDate?.weekday];
       date.isSunday = _weekDay[fullDate?.weekday] == '일';
       date.fullDateString =
           '${date.date?.replaceAll('-', '.')} (${date.dayOfWeek})';

@@ -11,9 +11,9 @@ extension ReservationExtension on TextStyle {
     );
   }
 
-  TextStyle unSelectedDayStyle(bool isHoliday) {
+  TextStyle unSelectedDayStyle(bool? isHoliday) {
     return TextStyle(
-      color: isHoliday
+      color: isHoliday == true
               ? MLColor.mlHolidayColor
               : MLColor.mlPrimaryColor,
       fontWeight: FontWeight.w300,
@@ -29,11 +29,11 @@ extension ReservationExtension on TextStyle {
     );
   }
 
-  TextStyle unSelectedWeekStyle(bool isToday, bool isHoliday) {
+  TextStyle unSelectedWeekStyle(bool? isToday, bool? isHoliday) {
     return TextStyle(
-      color: isToday
+      color: isToday == true
           ? MLColor.mlTodayColor
-          : isHoliday
+          : isHoliday == true
               ? MLColor.mlHolidayColor
               : MLColor.mlPrimaryColor,
       fontWeight: FontWeight.w300,

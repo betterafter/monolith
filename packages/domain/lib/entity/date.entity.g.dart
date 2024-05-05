@@ -12,8 +12,8 @@ DateEntity _$DateEntityFromJson(Map<String, dynamic> json) => DateEntity(
       enabled: json['enabled'] as bool?,
       holidayYn: json['holidayYn'] as bool?,
     )
-      ..isToday = json['isToday'] as bool
-      ..isSunday = json['isSunday'] as bool
+      ..isToday = json['isToday'] as bool?
+      ..isSunday = json['isSunday'] as bool?
       ..monthString = json['monthString'] as String?
       ..dayString = json['dayString'] as String?
       ..fullDateString = json['fullDateString'] as String?

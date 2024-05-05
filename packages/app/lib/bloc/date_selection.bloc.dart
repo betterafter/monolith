@@ -18,7 +18,7 @@ class DateSelectionBloc extends Bloc<DateEvent, DateState> {
   ) async {
     try {
       var dateList = await reservationUsecase.getDateList();
-      var todayIndex = dateList?.indexWhere((date) => date.isToday);
+      var todayIndex = dateList?.indexWhere((date) => date.isToday == true);
 
       emit(DateState.initial(
         dateList: dateList,

@@ -23,7 +23,8 @@ class ReservationRepositoryImpl implements ReservationRepository {
             return dateList;
           }, result);
         } catch (e) {
-          return [];
+          print('[keykat] $e');
+          return null;
         }
       }, error: (result, exception) {
         return null;

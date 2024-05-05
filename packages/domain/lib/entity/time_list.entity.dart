@@ -62,6 +62,7 @@ class TimeListEntity {
     this.stockUseYn,
     this.timeSlot,
     this.totStockCount,
+    this.appOnlyYn,
   });
 
   factory TimeListEntity.fromJson(Map<String, dynamic> json) =>
