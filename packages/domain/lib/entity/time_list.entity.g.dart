@@ -24,7 +24,8 @@ TimeListEntity _$TimeListEntityFromJson(Map<String, dynamic> json) =>
       stockUseYn: json['stockUseYn'] as bool?,
       timeSlot: json['timeSlot'] as String?,
       totStockCount: (json['totStockCount'] as num?)?.toInt(),
-    )..appOnlyYn = json['appOnlyYn'] as bool?;
+      appOnlyYn: json['appOnlyYn'] as bool?,
+    );
 
 Map<String, dynamic> _$TimeListEntityToJson(TimeListEntity instance) =>
     <String, dynamic>{
