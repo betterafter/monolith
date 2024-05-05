@@ -55,18 +55,18 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
         if (state is DateInitialState) {
           _todayIndex.value = state.todayIndex ?? 0;
           context.read<DateSelectionBloc>().add(
-            DateSelectEvent(
-              state.dateList?[_todayIndex.value].date ?? '',
-              selectedIndex: _todayIndex.value,
-            ),
-          );
+                DateSelectEvent(
+                  state.dateList?[_todayIndex.value].date ?? '',
+                  selectedIndex: _todayIndex.value,
+                ),
+              );
           _animateScrollController();
           dateList.addAll(_dateWidgetList(state.dateList ?? []));
         }
 
         return SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: 200,
+          height: 130,
           child: Column(
             children: [
               Expanded(
@@ -106,7 +106,10 @@ class _DateSelectionWidgetState extends State<DateSelectionWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(date.monthString ?? ''),
+                Text(
+                  date.monthString ?? '',
+                  style: const TextStyle(fontSize: 18),
+                ),
                 const Padding(padding: EdgeInsets.only(top: 10)),
                 GestureDetector(
                   onTap: () {
